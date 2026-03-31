@@ -1,31 +1,31 @@
 # Cash Register Security App
 
-একটি আধুনিক POS (Point of Sale) সিস্টেমে ক্যাশ রেজিস্টারের নিরাপত্তা এবং সেশন ম্যানেজমেন্ট নিশ্চিত করার জন্য এই অ্যাপটি তৈরি করা হয়েছে। এটি মূলত নিশ্চিত করে যে, প্রতিদিনের বিক্রয় শুরু করার আগে আগের দিনের হিসাব (Register) সঠিকভাবে ক্লোজ করা হয়েছে কি না।
+This app is designed to ensure cash register security and session management in a modern POS (Point of Sale) system. Its primary goal is to ensure that the previous day's register is properly closed before starting sales for the current day.
 
-## অ্যাপটি কেন বানানো হয়েছে? (Purpose)
-অনেক সময় রিটেইল শপে দেখা যায় যে অপারেটররা আগের দিনের রেজিস্টার ক্লোজ না করেই পরের দিনের কাজ শুরু করতে চায়, যা হিসাবের গড়মিল বা নিরাপত্তার ঝুঁকি তৈরি করে। এই অ্যাপটি:
-*   সেশন ওভারল্যাপিং প্রতিরোধ করে।
-*   নিশ্চিত করে যে একটি সেশন শুধুমাত্র নির্দিষ্ট দিনের জন্য কার্যকর।
-*   অপারেটরকে বাধ্য করে আগের দিনের কাজ শেষ করে নতুন দিন শুরু করতে।
+## Purpose
+In retail shops, operators often forget to close the previous day's register before starting the next day's work, which can lead to accounting errors or security risks. This app:
+*   Prevents session overlapping.
+*   Ensures a session is valid only for a specific day.
+*   Forces the operator to complete the previous day's tasks before starting a new one.
 
-## অ্যাপটি কীভাবে কাজ করে? (How it works)
-অ্যাপটি তিনটি প্রধান অবস্থার (State) মাধ্যমে কাজ করে:
+## How it works
+The app operates through three main states:
 
-1.  **CLOSED State:** শুরুতে রেজিস্টার বন্ধ থাকে। ইউজারকে "Open Register" বাটনে ক্লিক করে কাজ শুরু করতে হয়।
-2.  **ACTIVE State:** রেজিস্টার খোলার পর এটি একটি একটিভ সেশনে থাকে। এখানে সেলস ড্যাশবোর্ড আনলক হয়। আমরা এখানে একটি "Simulate Next Day" বাটন রেখেছি যা দিয়ে চেক করা যায় পরের দিন হলে কী ঘটবে।
-3.  **STALE State:** যদি রেজিস্টার খোলা অবস্থায় দিন শেষ হয়ে যায় এবং পরের দিন ইউজার আবার অ্যাপে আসে, তবে অ্যাপটি তাকে "ACCESS DENIED" দেখাবে। কারণ আগের দিনের সেশনটি এখন "Stale" বা বাসি হয়ে গেছে। ইউজারকে অবশ্যই আগের সেশনটি ক্লোজ করে নতুন করে শুরু করতে হবে।
+1.  **CLOSED State:** Initially, the register is closed. The user must click the "Open Register" button to begin.
+2.  **ACTIVE State:** Once opened, the session becomes active, and the POS Dashboard is unlocked. A "Simulate Next Day" button is provided to test what happens when the day changes.
+3.  **STALE State:** If a session is left open and the user returns the next day, the app displays "ACCESS DENIED!" because the previous day's session is now "Stale." The user must close the yesterday's register to proceed.
 
-## প্রযুক্তি যা ব্যবহার করা হয়েছে (Tech Stack)
-*   **Kotlin:** অ্যাপের মূল লজিক লেখার জন্য।
-*   **Jetpack Compose:** আধুনিক এবং ডাইনামিক ইউজার ইন্টারফেস (UI) তৈরির জন্য।
-*   **ViewModel:** অ্যাপের স্টেট (State) এবং ডাটা ম্যানেজ করার জন্য।
-*   **Material 3:** গুগলের লেটেস্ট ডিজাইন গাইডলাইন অনুসরণ করার জন্য।
-*   **Java Time API (LocalDate):** তারিখ এবং সময় হ্যান্ডেল করার জন্য।
+## Tech Stack
+*   **Kotlin:** For the core application logic.
+*   **Jetpack Compose:** For building a modern and dynamic User Interface (UI).
+*   **ViewModel:** For managing application state and data.
+*   **Material 3:** Following Google's latest design guidelines.
+*   **Java Time API (LocalDate):** For handling dates and time-based logic.
 
-## প্রজেক্টের বৈশিষ্ট্য (Features)
-*   **Real-time State Management:** রেজিস্টারের অবস্থার উপর ভিত্তি করে অটোমেটিক UI পরিবর্তন।
-*   **Session Security:** আগের দিনের সেশন ক্লোজ না করলে নতুন দিনের কাজ শুরু করা অসম্ভব।
-*   **Time Simulation:** ডেভেলপার বা টেস্টারের জন্য পরের দিনের পরিস্থিতি সিমুলেট করার সুবিধা।
+## Features
+*   **Real-time State Management:** UI updates automatically based on the register's state.
+*   **Session Security:** Prevents starting new work until the previous day's session is closed.
+*   **Time Simulation:** Built-in tool for developers and testers to simulate the "Next Day" scenario.
 
 ---
-এটি একটি প্র্যাকটিস প্রজেক্ট যা কটলিন এবং জেপ্যাক কম্পোজের স্টেট ম্যানেজমেন্ট শেখার জন্য তৈরি করা হয়েছে।
+This is a practice project built to explore and learn state management in Kotlin and Jetpack Compose.
