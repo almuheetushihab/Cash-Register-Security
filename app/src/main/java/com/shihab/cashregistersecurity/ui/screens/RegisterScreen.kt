@@ -37,7 +37,8 @@ import com.shihab.cashregistersecurity.viewmodel.RegisterViewModel
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun RegisterScreen(viewModel: RegisterViewModel = viewModel()) {
+fun RegisterScreen(viewModel: RegisterViewModel = viewModel()
+) {
 
     val headerDate = viewModel.simulatedCurrentDate.toString()
 

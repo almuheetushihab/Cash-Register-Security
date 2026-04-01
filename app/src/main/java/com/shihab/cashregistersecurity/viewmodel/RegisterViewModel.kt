@@ -38,6 +38,17 @@ class RegisterViewModel : ViewModel() {
         openedDate = simulatedCurrentDate
     }
 
+
+    fun closedRegister(){
+        isRegisterOpen = false
+        openedDate = simulatedCurrentDate
+    }
+//    fun RegisterOpen and Closeed(){
+//        isRegisterOpen = true
+//        openedDate = simulatedCurrentDate
+//        // Simulate some operations here...
+//        isRegisterOpen = false
+//    }
     fun closeRegister() {
         isRegisterOpen = false
         openedDate = null
